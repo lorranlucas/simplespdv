@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif; /* Tipografia moderna e limpa */
+  font-family: 'Inter', sans-serif;
   background: #f7f7f7;
   color: #2d3748;
   line-height: 1.7;
@@ -14,27 +14,10 @@ body {
 }
 
 /* Animações */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(60px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
-@keyframes ripple {
-  0% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.5); }
-  70% { box-shadow: 0 0 0 25px rgba(255, 99, 71, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0); }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes ripple { 0% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.5); } 70% { box-shadow: 0 0 0 25px rgba(255, 99, 71, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0); } }
 
 .fade-in { animation: fadeIn 1.6s ease-in-out; }
 .slide-up { animation: slideUp 1.2s ease-out forwards; }
@@ -52,7 +35,7 @@ body {
   text-align: center;
   padding: 0 30px;
   overflow: hidden;
-  background: linear-gradient(120deg, #1e3a8a, #3b82f6); /* Gradiente base */
+  background: linear-gradient(120deg, #1e3a8a, #3b82f6);
 }
 .hero-background {
   position: absolute;
@@ -76,23 +59,27 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  max-height: 100px; /* Altura máxima reduzida */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 50px;
-  background: rgba(30, 58, 138, 0.8); /* Fundo semi-transparente */
-  backdrop-filter: blur(10px); /* Efeito vidro */
+  padding: 15px 40px; /* Padding reduzido para slim */
+  background: rgba(30, 58, 138, 0.8);
+  backdrop-filter: blur(10px);
   z-index: 10;
   transition: background 0.3s ease;
 }
 .top-nav.scrolled { background: rgba(30, 58, 138, 0.95); }
-.logo { max-width: 160px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+.logo {
+  max-width: 120px; /* Logo reduzida */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
 .nav-links a {
   color: #ffffff;
-  margin: 0 25px;
+  margin: 0 20px; /* Margem reduzida */
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Fonte menor para slim */
   letter-spacing: 0.5px;
   transition: color 0.3s ease, transform 0.2s ease;
 }
@@ -440,8 +427,9 @@ body {
   .hero p { font-size: 1.2rem; }
   .hero-cta { flex-direction: column; gap: 15px; }
   .cta-button, .secondary-cta { padding: 14px 30px; font-size: 1.1rem; }
-  .top-nav { padding: 20px; }
-  .nav-links a { margin: 0 15px; font-size: 1rem; }
+  .top-nav { padding: 10px 20px; max-height: 80px; } /* Ajuste para mobile */
+  .logo { max-width: 100px; } /* Logo ainda menor em mobile */
+  .nav-links a { margin: 0 15px; font-size: 0.9rem; }
   .benefits h2, .how-it-works h2, .plans h2, .testimonials h2, .final-cta h2 { font-size: 2.2rem; }
   .benefit-item, .step, .plan, .testimonial { padding: 30px 20px; }
   .price { font-size: 1.8rem; }
@@ -450,7 +438,8 @@ body {
 @media (max-width: 480px) {
   .hero h1 { font-size: 2rem; }
   .hero p { font-size: 1rem; }
-  .top-nav { flex-direction: column; padding: 15px; }
-  .nav-links { margin-top: 15px; }
-  .nav-links a { margin: 10px 0; display: block; }
+  .top-nav { flex-direction: column; padding: 10px; max-height: 100px; }
+  .logo { max-width: 90px; }
+  .nav-links { margin-top: 10px; }
+  .nav-links a { margin: 8px 0; font-size: 0.85rem; display: block; }
 }
