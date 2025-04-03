@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/simplespdv/static/css/main.c9102c17.css",
+    "main.css": "/simplespdv/static/css/main.fbdd486c.css",
     "main.js": "/simplespdv/static/js/main.3f35a299.js",
     "static/js/453.2c8302c8.chunk.js": "/simplespdv/static/js/453.2c8302c8.chunk.js",
     "static/media/logo-simplespdv.png": "/simplespdv/static/media/logo-simplespdv.dff84790f0d68d603503.png",
     "index.html": "/simplespdv/index.html",
-    "main.c9102c17.css.map": "/simplespdv/static/css/main.c9102c17.css.map",
+    "main.fbdd486c.css.map": "/simplespdv/static/css/main.fbdd486c.css.map",
     "main.3f35a299.js.map": "/simplespdv/static/js/main.3f35a299.js.map",
     "453.2c8302c8.chunk.js.map": "/simplespdv/static/js/453.2c8302c8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9102c17.css",
+    "static/css/main.fbdd486c.css",
     "static/js/main.3f35a299.js"
   ]
 }
