@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/simplespdv/static/css/main.f20c2a8a.css",
-    "main.js": "/simplespdv/static/js/main.2ddaef73.js",
+    "main.css": "/simplespdv/static/css/main.433dab2a.css",
+    "main.js": "/simplespdv/static/js/main.172fcafe.js",
     "static/js/453.2c8302c8.chunk.js": "/simplespdv/static/js/453.2c8302c8.chunk.js",
-    "static/media/logo-simplespdv.png": "/simplespdv/static/media/logo-simplespdv.0ba95576b7fdd81efa24.png",
+    "static/media/logo-simplespdv.png": "/simplespdv/static/media/logo-simplespdv.b6f4c50a30d586d3668c.png",
     "index.html": "/simplespdv/index.html",
-    "main.f20c2a8a.css.map": "/simplespdv/static/css/main.f20c2a8a.css.map",
-    "main.2ddaef73.js.map": "/simplespdv/static/js/main.2ddaef73.js.map",
+    "main.433dab2a.css.map": "/simplespdv/static/css/main.433dab2a.css.map",
+    "main.172fcafe.js.map": "/simplespdv/static/js/main.172fcafe.js.map",
     "453.2c8302c8.chunk.js.map": "/simplespdv/static/js/453.2c8302c8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f20c2a8a.css",
-    "static/js/main.2ddaef73.js"
+    "static/css/main.433dab2a.css",
+    "static/js/main.172fcafe.js"
   ]
 }
