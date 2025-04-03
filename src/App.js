@@ -5,64 +5,74 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      {/* Cabeçalho (Hero Section) com Parallax */}
+      {/* Hero Section Inspirada na Toast */}
       <header className="hero">
         <div className="hero-background"></div>
+        <nav className="top-nav">
+          <img src={logo} alt="Simplespdv Logo" className="logo" />
+          <div className="nav-links">
+            <a href="#benefits">Benefícios</a>
+            <a href="#how-it-works">Como Funciona</a>
+            <a href="#planos">Planos</a>
+          </div>
+        </nav>
         <div className="hero-content">
-          <img src={logo} alt="Simplespdv Logo" className="logo fade-in" />
-          <h1 className="fade-in">Simplifique Suas Vendas com o Simplespdv</h1>
-          <p className="fade-in">A solução definitiva para vendas, estoque e gestão em poucos cliques.</p>
-          <a href="#planos" className="cta-button pulse">Comece Grátis por 7 Dias</a>
+          <h1 className="fade-in">O PDV que Transforma Seu Negócio</h1>
+          <p className="fade-in">Simplifique vendas, estoque e gestão com uma solução completa e intuitiva.</p>
+          <div className="hero-cta">
+            <a href="#planos" className="cta-button pulse">Teste Grátis por 7 Dias</a>
+            <a href="#demo" className="secondary-cta">Veja a Demonstração</a>
+          </div>
         </div>
       </header>
 
       {/* Seção de Benefícios */}
-      <section className="benefits">
-        <h2 className="slide-up">O que o Simplespdv Faz por Você?</h2>
+      <section id="benefits" className="benefits">
+        <h2 className="slide-up">Por que Escolher o Simplespdv?</h2>
         <div className="benefits-grid">
           <div className="benefit-item slide-up">
-            <span className="icon">🎯</span>
-            <h3>Fácil e Intuitivo</h3>
-            <p>Domine o sistema em minutos, sem complicações.</p>
+            <span className="icon">⚡</span>
+            <h3>Rápido e Simples</h3>
+            <p>Configure e comece a vender em minutos.</p>
           </div>
           <div className="benefit-item slide-up" style={{ animationDelay: '0.2s' }}>
-            <span className="icon">📦</span>
-            <h3>Estoque na Palma da Mão</h3>
-            <p>Controle total em tempo real, onde você estiver.</p>
+            <span className="icon">📈</span>
+            <h3>Crescimento Fácil</h3>
+            <p>Relatórios que mostram o caminho do sucesso.</p>
           </div>
           <div className="benefit-item slide-up" style={{ animationDelay: '0.4s' }}>
-            <span className="icon">📊</span>
-            <h3>Insights que Transformam</h3>
-            <p>Relatórios poderosos para crescer com confiança.</p>
+            <span className="icon">📱</span>
+            <h3>Acesse de Qualquer Lugar</h3>
+            <p>Gerencie seu negócio do celular ou computador.</p>
           </div>
         </div>
       </section>
 
       {/* Seção Como Funciona */}
-      <section className="how-it-works">
-        <h2 className="slide-up">Seu Sucesso em 3 Passos</h2>
+      <section id="how-it-works" className="how-it-works">
+        <h2 className="slide-up">Comece Hoje em 3 Passos</h2>
         <div className="steps">
           <div className="step slide-up">
             <span className="step-number">1</span>
             <h3>Cadastre-se</h3>
-            <p>Rápido e sem burocracia: menos de 2 minutos.</p>
+            <p>Crie sua conta em menos de 2 minutos.</p>
           </div>
           <div className="step slide-up" style={{ animationDelay: '0.2s' }}>
             <span className="step-number">2</span>
             <h3>Configure</h3>
-            <p>Adicione produtos e venda no mesmo dia.</p>
+            <p>Adicione produtos e personalize tudo.</p>
           </div>
           <div className="step slide-up" style={{ animationDelay: '0.4s' }}>
             <span className="step-number">3</span>
-            <h3>Gerencie</h3>
-            <p>Tudo centralizado, acessível de qualquer lugar.</p>
+            <h3>Venda</h3>
+            <p>Gerencie vendas e estoque com facilidade.</p>
           </div>
         </div>
       </section>
 
-      {/* Seção de Planos com Gamificação */}
+      {/* Seção de Planos */}
       <section id="planos" className="plans">
-        <h2 className="slide-up">Escolha Seu Plano e Desbloqueie Benefícios</h2>
+        <h2 className="slide-up">Planos para Todos os Tamanhos</h2>
         <div className="plans-grid">
           <div className="plan slide-up">
             <h3>Free</h3>
@@ -72,10 +82,10 @@ function App() {
               <li>Até 50 produtos</li>
               <li>Suporte por e-mail</li>
             </ul>
-            <a href="#" className="plan-button ripple">Testar Grátis</a>
+            <a href="#" className="plan-button ripple">Testar Agora</a>
           </div>
           <div className="plan highlighted slide-up" style={{ animationDelay: '0.2s' }}>
-            <span className="badge">Mais Popular</span>
+            <span className="badge">Mais Escolhido</span>
             <h3>Iniciante</h3>
             <p className="price">R$ 45/mês</p>
             <ul>
@@ -100,14 +110,14 @@ function App() {
 
       {/* Seção de Depoimentos */}
       <section className="testimonials">
-        <h2 className="slide-up">Quem Usa, Recomenda</h2>
+        <h2 className="slide-up">O que os Clientes Dizem</h2>
         <div className="testimonials-grid">
           <div className="testimonial slide-up">
-            <p>“O Simplespdv é um divisor de águas. Minha gestão nunca foi tão fácil!”</p>
+            <p>“O Simplespdv mudou minha rotina. Tudo mais rápido e organizado!”</p>
             <h4>João Silva, Dono de Loja</h4>
           </div>
           <div className="testimonial slide-up" style={{ animationDelay: '0.2s' }}>
-            <p>“Os relatórios são incríveis. Finalmente entendo meu negócio!”</p>
+            <p>“Relatórios incríveis e suporte que resolve. Recomendo!”</p>
             <h4>Maria Oliveira, Empreendedora</h4>
           </div>
         </div>
@@ -115,9 +125,9 @@ function App() {
 
       {/* CTA Final */}
       <section className="final-cta">
-        <h2 className="fade-in">Transforme Sua Rotina Hoje</h2>
-        <p className="fade-in">Teste grátis e veja a diferença em 7 dias.</p>
-        <a href="#planos" className="cta-button pulse ripple">Comece Agora</a>
+        <h2 className="fade-in">Pronto para Simplificar Sua Vida?</h2>
+        <p className="fade-in">Experimente o Simplespdv e veja os resultados.</p>
+        <a href="#planos" className="cta-button pulse ripple">Teste Grátis Agora</a>
       </section>
 
       {/* Rodapé */}
