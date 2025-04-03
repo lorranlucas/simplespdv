@@ -1,8 +1,9 @@
 /* Estilo Geral */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Tipografia moderna */
   background: #f0f2f5;
+  line-height: 1.6;
 }
 
 /* Animações */
@@ -12,213 +13,242 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.03); }
   100% { transform: scale(1); }
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 111, 97, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0); }
 }
 
-.slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
+.fade-in { animation: fadeIn 1.2s ease-in-out; }
+.slide-up { animation: slideUp 0.9s ease-out forwards; }
+.pulse { animation: pulse 2s infinite; }
+.ripple:hover { animation: ripple 0.8s linear; }
 
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-/* Hero Section */
+/* Hero Section com Parallax */
 .hero {
+  position: relative;
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #007bff, #00c4cc); /* Gradiente moderno */
-  color: white;
+  padding: 100px 20px;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
-.logo {
-  max-width: 180px;
-  margin-bottom: 20px;
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #007bff, #00c4cc);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
 }
-.hero h1 {
-  font-size: 2.8rem;
-  margin: 0 0 20px;
+@keyframes gradientShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
 }
+.logo { max-width: 200px; margin-bottom: 30px; }
+.hero h1 { font-size: 3rem; font-weight: 700; margin: 0 0 20px; }
+.hero p { font-size: 1.3rem; margin-bottom: 40px; }
 .cta-button {
   display: inline-block;
-  padding: 15px 30px;
-  background: #ff6f61; /* Cor vibrante */
+  padding: 16px 36px;
+  background: #ff6f61;
   color: white;
   text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 .cta-button:hover {
   background: #e65b50;
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Benefits Section */
 .benefits {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: #fff;
   text-align: center;
 }
+.benefits h2 { font-size: 2.5rem; margin-bottom: 50px; }
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .benefit-item {
-  padding: 20px;
+  padding: 30px;
   background: #f9f9f9;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .benefit-item:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
-.icon {
-  font-size: 2.5rem;
-  color: #007bff;
-  margin-bottom: 15px;
-}
+.icon { font-size: 3rem; color: #007bff; margin-bottom: 20px; }
 
 /* How It Works Section */
 .how-it-works {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: linear-gradient(to bottom, #f4f7fa, #e0e7ff);
   text-align: center;
 }
+.how-it-works h2 { font-size: 2.5rem; margin-bottom: 50px; }
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .step {
-  padding: 20px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 .step-number {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   background: #007bff;
   color: white;
   border-radius: 50%;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
 /* Plans Section */
 .plans {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: #fff;
   text-align: center;
 }
+.plans h2 { font-size: 2.5rem; margin-bottom: 50px; }
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .plan {
-  padding: 30px;
+  position: relative;
+  padding: 40px;
   background: #f9f9f9;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .plan:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 .plan.highlighted {
-  background: #e0f7fa;
-  border: 2px solid #007bff;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+  border: none;
 }
-.price {
-  font-size: 1.5rem;
-  color: #007bff;
-  margin: 10px 0;
+.badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff6f61;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
 }
-.plan ul {
-  list-style: none;
-  padding: 0;
-}
-.plan ul li {
-  margin: 10px 0;
-}
+.price { font-size: 1.8rem; color: #007bff; margin: 15px 0; }
+.plan ul { list-style: none; padding: 0; }
+.plan ul li { margin: 12px 0; }
 .plan-button {
   display: block;
-  padding: 12px;
+  padding: 14px;
   background: #28a745;
   color: white;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 .plan-button:hover {
   background: #218838;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Testimonials Section */
 .testimonials {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: linear-gradient(to bottom, #fff, #f4f7fa);
   text-align: center;
 }
+.testimonials h2 { font-size: 2.5rem; margin-bottom: 50px; }
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .testimonial {
-  padding: 20px;
+  padding: 30px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
 }
+.testimonial:hover { transform: translateY(-5px); }
 
 /* Final CTA */
 .final-cta {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: linear-gradient(135deg, #007bff, #00c4cc);
   color: white;
 }
+.final-cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.final-cta p { font-size: 1.2rem; margin-bottom: 30px; }
 
 /* Footer */
 .footer {
-  padding: 30px 20px;
-  background: #333;
+  padding: 40px 20px;
+  background: #2d3748;
   color: white;
   text-align: center;
 }
 .footer-links a {
-  color: #fff;
-  margin: 0 15px;
+  color: #cbd5e0;
+  margin: 0 20px;
   text-decoration: none;
+  transition: color 0.3s;
 }
-.footer-links a:hover {
-  text-decoration: underline;
-}
+.footer-links a:hover { color: #fff; }
