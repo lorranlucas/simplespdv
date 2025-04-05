@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo-simplespdv.png'; // Certifique-se de que o caminho está correto
 import './App.css';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <div className="App">
       {/* Hero Section Inspirada na Toast */}
       <header className="hero">
-        <div className="hero-background"></div>
-        <nav className="top-nav">
+        <div className="hero-background" aria-hidden="true"></div>
+        <nav className={`top-nav ${isMenuOpen ? 'active' : ''}`}>
           <img src={logo} alt="Simplespdv Logo" className="logo" />
+          <button
+            className="hamburger"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
           <div className="nav-links">
             <a href="#benefits">Benefícios</a>
             <a href="#how-it-works">Como Funciona</a>
@@ -31,17 +47,17 @@ function App() {
         <h2 className="slide-up">Por que Escolher o Simplespdv?</h2>
         <div className="benefits-grid">
           <div className="benefit-item slide-up">
-            <span className="icon">⚡</span>
+            <span className="icon" aria-hidden="true">⚡</span>
             <h3>Rápido e Simples</h3>
             <p>Configure e comece a vender em minutos.</p>
           </div>
           <div className="benefit-item slide-up" style={{ animationDelay: '0.2s' }}>
-            <span className="icon">📈</span>
+            <span className="icon" aria-hidden="true">📈</span>
             <h3>Crescimento Fácil</h3>
             <p>Relatórios que mostram o caminho do sucesso.</p>
           </div>
           <div className="benefit-item slide-up" style={{ animationDelay: '0.4s' }}>
-            <span className="icon">📱</span>
+            <span className="icon" aria-hidden="true">📱</span>
             <h3>Acesse de Qualquer Lugar</h3>
             <p>Gerencie seu negócio do celular ou computador.</p>
           </div>
@@ -53,17 +69,17 @@ function App() {
         <h2 className="slide-up">Comece Hoje em 3 Passos</h2>
         <div className="steps">
           <div className="step slide-up">
-            <span className="step-number">1</span>
+            <span className="step-number" aria-hidden="true">1</span>
             <h3>Cadastre-se</h3>
             <p>Crie sua conta em menos de 2 minutos.</p>
           </div>
           <div className="step slide-up" style={{ animationDelay: '0.2s' }}>
-            <span className="step-number">2</span>
+            <span className="step-number" aria-hidden="true">2</span>
             <h3>Configure</h3>
             <p>Adicione produtos e personalize tudo.</p>
           </div>
           <div className="step slide-up" style={{ animationDelay: '0.4s' }}>
-            <span className="step-number">3</span>
+            <span className="step-number" aria-hidden="true">3</span>
             <h3>Venda</h3>
             <p>Gerencie vendas e estoque com facilidade.</p>
           </div>
@@ -72,12 +88,12 @@ function App() {
 
       {/* Seção de Planos */}
       <section id="planos" className="plans">
-        <h2 className="slide-up">Planos para Todos os Tamanhos</h2>
+        <h2 className="slide-up plans-title">Planos para Todos os Tamanhos</h2>
         <div className="plans-grid">
           <div className="plan slide-up">
             <h3>Free</h3>
             <p className="price">Grátis por 7 Dias</p>
-            <ul>
+            <ul aria-label="Benefícios do plano Free">
               <li>Funcionalidades básicas</li>
               <li>Até 50 produtos</li>
               <li>Suporte por e-mail</li>
@@ -85,10 +101,10 @@ function App() {
             <a href="#" className="plan-button ripple">Testar Agora</a>
           </div>
           <div className="plan highlighted slide-up" style={{ animationDelay: '0.2s' }}>
-            <span className="badge">Mais Escolhido</span>
+            <span className="badge" aria-label="Plano mais escolhido">Mais Escolhido</span>
             <h3>Iniciante</h3>
             <p className="price">R$ 45/mês</p>
-            <ul>
+            <ul aria-label="Benefícios do plano Iniciante">
               <li>Funcionalidades avançadas</li>
               <li>Até 500 produtos</li>
               <li>Suporte prioritário</li>
@@ -98,7 +114,7 @@ function App() {
           <div className="plan slide-up" style={{ animationDelay: '0.4s' }}>
             <h3>Pro</h3>
             <p className="price">R$ 95/mês</p>
-            <ul>
+            <ul aria-label="Benefícios do plano Pro">
               <li>Todas as funcionalidades</li>
               <li>Produtos ilimitados</li>
               <li>Suporte 24/7</li>
@@ -113,12 +129,20 @@ function App() {
         <h2 className="slide-up">O que os Clientes Dizem</h2>
         <div className="testimonials-grid">
           <div className="testimonial slide-up">
-            <p>“O Simplespdv mudou minha rotina. Tudo mais rápido e organizado!”</p>
-            <h4>João Silva, Dono de Loja</h4>
+            <blockquote>
+              <p>“O Simplespdv mudou minha rotina. Tudo mais rápido e organizado!”</p>
+              <footer>
+                <cite>João Silva, Dono de Loja</cite>
+              </footer>
+            </blockquote>
           </div>
           <div className="testimonial slide-up" style={{ animationDelay: '0.2s' }}>
-            <p>“Relatórios incríveis e suporte que resolve. Recomendo!”</p>
-            <h4>Maria Oliveira, Empreendedora</h4>
+            <blockquote>
+              <p>“Relatórios incríveis e suporte que resolve. Recomendo!”</p>
+              <footer>
+                <cite>Maria Oliveira, Empreendedora</cite>
+              </footer>
+            </blockquote>
           </div>
         </div>
       </section>
