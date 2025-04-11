@@ -1,19 +1,86 @@
-import React from 'react';
-import logo from './logo-simplespdv.png'; // Certifique-se de que o caminho está correto
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import logo from './logo-simplespdv.png';
+import desktopScreenshot from './Balcao.png';
+import onlineScreenshot1 from './Dashboard.png';
+import onlineScreenshot2 from './Cozinha.png';
 import './App.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
+  // State for hamburger menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // State for gallery layout (desktop grid vs. mobile carousel)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Update isMobile on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) setIsMenuOpen(false); // Close menu on desktop
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Slider settings for mobile carousel
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    arrows: true,
+    fade: true,
+  };
+
+  // Screenshots data
+  const screenshots = [
+    {
+      image: desktopScreenshot,
+      alt: 'Simplespdv Desktop Interface - Balcão',
+      caption: 'Gerencie seu negócio com facilidade no desktop',
+      mockupClass: 'desktop-mockup',
+    },
+    {
+      image: onlineScreenshot1,
+      alt: 'Simplespdv Online Version - Dashboard',
+      caption: 'Acompanhe vendas em tempo real, onde estiver',
+      mockupClass: 'browser-mockup',
+    },
+    {
+      image: onlineScreenshot2,
+      alt: 'Simplespdv Online Version - Cozinha',
+      caption: 'Controle de estoque na palma da sua mão',
+      mockupClass: 'browser-mockup',
+    },
+  ];
+
   return (
     <div className="App">
-      {/* Hero Section Inspirada na Toast */}
+      {/* Hero Section */}
       <header className="hero">
         <div className="hero-background"></div>
         <nav className="top-nav">
           <img src={logo} alt="Simplespdv Logo" className="logo" />
-          <div className="nav-links">
-            <a href="#benefits">Benefícios</a>
-            <a href="#how-it-works">Como Funciona</a>
-            <a href="#planos">Planos</a>
+          <button
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? '✕' : '☰'}
+          </button>
+          <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+            <a href="#benefits" onClick={() => setIsMenuOpen(false)}>Benefícios</a>
+            <a href="#how-it-works" onClick={() => setIsMenuOpen(false)}>Como Funciona</a>
+            <a href="#gallery" onClick={() => setIsMenuOpen(false)}>Galeria</a>
+            <a href="#planos" onClick={() => setIsMenuOpen(false)}>Planos</a>
           </div>
         </nav>
         <div className="hero-content">
@@ -26,7 +93,7 @@ function App() {
         </div>
       </header>
 
-      {/* Seção de Benefícios */}
+      {/* Benefits Section */}
       <section id="benefits" className="benefits">
         <h2 className="slide-up">Por que Escolher o Simplespdv?</h2>
         <div className="benefits-grid">
@@ -48,7 +115,7 @@ function App() {
         </div>
       </section>
 
-      {/* Seção Como Funciona */}
+      {/* How It Works Section */}
       <section id="how-it-works" className="how-it-works">
         <h2 className="slide-up">Comece Hoje em 3 Passos</h2>
         <div className="steps">
@@ -70,7 +137,47 @@ function App() {
         </div>
       </section>
 
-      {/* Seção de Planos */}
+      {/* Gallery Section */}
+      <section id="gallery" className="gallery">
+        <h2 className="slide-up">Veja o Simplespdv em Ação</h2>
+        {isMobile ? (
+          <div className="gallery-carousel">
+            <Slider aria-label="Galeria de capturas de tela do Simplespdv" {...sliderSettings}>
+              {screenshots.map((shot, index) => (
+                <div key={index} className="gallery-slide">
+                  <div className={`mockup-wrapper ${shot.mockupClass}`}>
+                    <img
+                      src={shot.image}
+                      alt={shot.alt}
+                      className="screenshot"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="caption fade-in">{shot.caption}</p>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        ) : (
+          <div className="gallery-grid">
+            {screenshots.map((shot, index) => (
+              <div key={index} className="gallery-item slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className={`mockup-wrapper ${shot.mockupClass}`}>
+                  <img
+                    src={shot.image}
+                    alt={shot.alt}
+                    className="screenshot"
+                    loading="lazy"
+                  />
+                </div>
+                <p className="caption fade-in">{shot.caption}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Plans Section */}
       <section id="planos" className="plans">
         <h2 className="slide-up">Planos para Todos os Tamanhos</h2>
         <div className="plans-grid">
@@ -108,7 +215,7 @@ function App() {
         </div>
       </section>
 
-      {/* Seção de Depoimentos */}
+      {/* Testimonials Section */}
       <section className="testimonials">
         <h2 className="slide-up">O que os Clientes Dizem</h2>
         <div className="testimonials-grid">
@@ -123,16 +230,16 @@ function App() {
         </div>
       </section>
 
-      {/* CTA Final */}
+      {/* Final CTA */}
       <section className="final-cta">
         <h2 className="fade-in">Pronto para Simplificar Sua Vida?</h2>
         <p className="fade-in">Experimente o Simplespdv e veja os resultados.</p>
         <a href="#planos" className="cta-button pulse ripple">Teste Grátis Agora</a>
       </section>
 
-      {/* Rodapé */}
+      {/* Footer */}
       <footer className="footer">
-        <p>© 2025 Simplespdv. Todos os direitos reservados.</p>
+        <p>© {new Date().getFullYear()} Simplespdv. Todos os direitos reservados.</p>
         <div className="footer-links">
           <a href="#">Termos de Uso</a>
           <a href="#">Política de Privacidade</a>

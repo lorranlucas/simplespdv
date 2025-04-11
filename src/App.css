@@ -14,10 +14,28 @@ body {
 }
 
 /* Animações */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-@keyframes ripple { 0% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.5); } 70% { box-shadow: 0 0 0 25px rgba(255, 99, 71, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0); } }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.5); }
+  70% { box-shadow: 0 0 0 25px rgba(255, 99, 71, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 99, 71, 0); }
+}
+@keyframes slideIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
 .fade-in { animation: fadeIn 1.6s ease-in-out; }
 .slide-up { animation: slideUp 1.2s ease-out forwards; }
@@ -59,11 +77,11 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  max-height: 100px; /* Altura máxima reduzida */
+  max-height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px; /* Padding reduzido para slim */
+  padding: 10px 20px;
   background: rgba(30, 58, 138, 0.8);
   backdrop-filter: blur(10px);
   z-index: 10;
@@ -71,15 +89,28 @@ body {
 }
 .top-nav.scrolled { background: rgba(30, 58, 138, 0.95); }
 .logo {
-  max-width: 120px; /* Logo reduzida */
+  max-width: 120px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 .nav-links a {
   color: #ffffff;
-  margin: 0 20px; /* Margem reduzida */
+  margin: 0 20px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem; /* Fonte menor para slim */
+  font-size: 1rem;
   letter-spacing: 0.5px;
   transition: color 0.3s ease, transform 0.2s ease;
 }
@@ -142,6 +173,44 @@ body {
   color: #1e3a8a;
   transform: translateY(-5px);
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 58, 138, 0.95);
+    flex-direction: column;
+    padding: 1rem 0;
+    animation: slideIn 0.3s ease-out;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links a:hover {
+    background: rgba(255, 99, 71, 0.1);
+  }
+  .logo {
+    max-width: 100px;
+  }
+  .top-nav {
+    max-height: 60px;
+    padding: 10px 15px;
+  }
 }
 
 /* Benefits Section */
@@ -242,6 +311,100 @@ body {
 .step:hover .step-number { transform: scale(1.1); }
 .step h3 { font-size: 1.75rem; font-weight: 600; margin-bottom: 15px; }
 .step p { font-size: 1.1rem; color: #4b5563; }
+
+/* Gallery Section */
+.gallery {
+  padding: 120px 30px;
+  background: #ffffff;
+  text-align: center;
+}
+.gallery h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 70px;
+  color: #1e3a8a;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery-carousel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.gallery-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+.mockup-wrapper {
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.mockup-wrapper:hover,
+.mockup-wrapper:focus-within {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.desktop-mockup {
+  width: 400px;
+  height: 250px;
+  background: linear-gradient(135deg, #f9fafb, #e2e8f0);
+  padding: 20px;
+  border: 2px solid #3b82f6;
+}
+.browser-mockup {
+  width: 400px;
+  height: 250px;
+  background: linear-gradient(135deg, #f9fafb, #e2e8f0);
+  padding: 20px;
+  border: 2px solid #ff6347;
+}
+.screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.caption {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-top: 1.5rem;
+  max-width: 360px;
+}
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #bfdbfe;
+}
+.slick-dots li.slick-active button:before {
+  color: #3b82f6;
+}
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: rgba(30, 58, 138, 0.8);
+  border-radius: 50%;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: #ffffff;
+}
 
 /* Plans Section */
 .plans {
@@ -427,19 +590,16 @@ body {
   .hero p { font-size: 1.2rem; }
   .hero-cta { flex-direction: column; gap: 15px; }
   .cta-button, .secondary-cta { padding: 14px 30px; font-size: 1.1rem; }
-  .top-nav { padding: 10px 20px; max-height: 80px; } /* Ajuste para mobile */
-  .logo { max-width: 100px; } /* Logo ainda menor em mobile */
-  .nav-links a { margin: 0 15px; font-size: 0.9rem; }
-  .benefits h2, .how-it-works h2, .plans h2, .testimonials h2, .final-cta h2 { font-size: 2.2rem; }
+  .benefits h2, .how-it-works h2, .gallery h2, .plans h2, .testimonials h2, .final-cta h2 { font-size: 2.2rem; }
   .benefit-item, .step, .plan, .testimonial { padding: 30px 20px; }
   .price { font-size: 1.8rem; }
+  .desktop-mockup, .browser-mockup { width: 100%; max-width: 400px; height: auto; padding: 15px; }
+  .caption { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 2rem; }
   .hero p { font-size: 1rem; }
-  .top-nav { flex-direction: column; padding: 10px; max-height: 100px; }
+  .top-nav { padding: 8px 10px; }
   .logo { max-width: 90px; }
-  .nav-links { margin-top: 10px; }
-  .nav-links a { margin: 8px 0; font-size: 0.85rem; display: block; }
 }
