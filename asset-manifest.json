@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/simplespdv/static/css/main.fbdd486c.css",
-    "main.js": "/simplespdv/static/js/main.3f35a299.js",
+    "main.css": "/simplespdv/static/css/main.f4ea0e02.css",
+    "main.js": "/simplespdv/static/js/main.c8ed932f.js",
     "static/js/453.2c8302c8.chunk.js": "/simplespdv/static/js/453.2c8302c8.chunk.js",
+    "static/media/Dashboard.png": "/simplespdv/static/media/Dashboard.87910381525e90086405.png",
+    "static/media/Balcao.png": "/simplespdv/static/media/Balcao.1c7c987479fc43041e4c.png",
+    "static/media/Cozinha.png": "/simplespdv/static/media/Cozinha.46f2454b8aa694ef9b15.png",
     "static/media/logo-simplespdv.png": "/simplespdv/static/media/logo-simplespdv.dff84790f0d68d603503.png",
+    "static/media/slick.svg": "/simplespdv/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/simplespdv/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/simplespdv/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/simplespdv/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/simplespdv/index.html",
-    "main.fbdd486c.css.map": "/simplespdv/static/css/main.fbdd486c.css.map",
-    "main.3f35a299.js.map": "/simplespdv/static/js/main.3f35a299.js.map",
+    "main.f4ea0e02.css.map": "/simplespdv/static/css/main.f4ea0e02.css.map",
+    "main.c8ed932f.js.map": "/simplespdv/static/js/main.c8ed932f.js.map",
     "453.2c8302c8.chunk.js.map": "/simplespdv/static/js/453.2c8302c8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbdd486c.css",
-    "static/js/main.3f35a299.js"
+    "static/css/main.f4ea0e02.css",
+    "static/js/main.c8ed932f.js"
   ]
 }
